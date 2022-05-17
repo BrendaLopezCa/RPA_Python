@@ -1,0 +1,7 @@
+<form method="post">
+    {% csrf_token %}
+    <link type='text/css' href='{% static "css/plantilla.css" %}' rel='stylesheet'/>
+    <h1>¿Desea eliminar al alumno {{ object }} ?</h1>
+    <button type="submit" name="button">Confirmar</button>
+    <a href="{% url 'index' %}">Cancelar</a>
+</form>

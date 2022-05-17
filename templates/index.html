@@ -1,0 +1,39 @@
+{% load static %}
+
+<title>{% block titulo %} Alumnos {% endblock titulo %}</title>
+{% block cuerpo %}
+
+<link type='text/css' href='{% static "css/plantilla.css" %}' rel='stylesheet'/>
+
+<body>
+<h1 id="titulo">FORMULARIO DE ALUMNOS</h1>
+<a id="btnEstilo" href="{% url 'crear_alumno' %}">Registrar</a>
+
+    <table border="2" id="tablaForm">
+    <thead>
+        <tr id="nombreColumnas">
+            <th>Matricula</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Facultad</th>
+            <th>Carrera</th>
+            <th>Correo</th>
+            <th>Opción</th>
+        </tr>
+    </thead>
+    <tbody id="alumnoInfo">
+        {% for alumno in alumnos %}
+        <tr>
+            <td>{{alumno.matricula}}</td>
+            <td>{{alumno.nombres}}</td>
+            <td>{{alumno.apellidos}}</td>
+            <td>{{alumno.facultad}}</td>
+            <td>{{alumno.carrera}}</td>
+            <td>{{alumno.correo}}</td>
+            <td><a href="{% url 'editar_alumno' alumno.matricula %}">Editar</a> <a href="{% url 'eliminar_alumno' alumno.matricula %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+{% endblock cuerpo %}
